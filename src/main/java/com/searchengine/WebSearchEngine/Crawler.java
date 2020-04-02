@@ -1,4 +1,10 @@
 package com.searchengine.WebSearchEngine;
+/**
+ * Crawler crawls the given link for more unique links.
+ * When all the unique links are found in the the given link, all the links 
+ * are converted to .txt files for further processing.
+ * 
+ * */
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -34,6 +40,7 @@ public class Crawler {
 				 }
 				 else {
 					 uniqueLinks.add(page.attr("abs:href"));
+					 System.out.println("URL: " + currentURL + " will be crawled");
 				 }
 			}
 		}
