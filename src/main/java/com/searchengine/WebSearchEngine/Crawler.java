@@ -1,3 +1,4 @@
+package com.searchengine.WebSearchEngine;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -19,11 +20,12 @@ public class Crawler {
 		try {
 			
 			 Document doc = Jsoup.connect(link).get();
+			 String pattern = link + ".*";
 
 			 Elements linksOnPage = doc.select("a[href]");
 			 for (Element page : linksOnPage) {
-				 System.out.println("link: "+page.attr("abs:href")+" "+Pattern.matches(link+"*", page.attr("abs:href")));
-				 if(h.contains(page.attr("abs:href")))
+//				 System.out.println("link: "+page.attr("abs:href")+" "+Pattern.matches(pattern, page.attr("abs:href")));
+				 if(h.contains(page.attr("abs:href")) || !Pattern.matches(pattern, page.attr("abs:href")))
 				 {
 					 continue;
 				 }
@@ -53,7 +55,7 @@ public class Crawler {
 				 String fileName = doc.title().replaceAll("[^a-zA-Z0-9_-]", "")+".txt";
 				// System.out.println(fileName);
 				 BufferedWriter out = new BufferedWriter( 
-		                 new FileWriter("C:\\Users\\ASUS\\Desktop\\Files\\"+fileName, true)); 
+		                 new FileWriter(System.getProperty("user.dir")+"\\textFiles\\"+fileName, true)); 
 		          out.write(htmlFile[i]+" "+txt); 
 		          out.close(); 
 			}
@@ -62,14 +64,14 @@ public class Crawler {
 			e.printStackTrace();
 		}	
 	}
-	public static void filesFinder()
+	public static void filesFinder(String urlToCrawl)
 	{
-		String crawl=webCrawl("https://www.geeksforgeeks.org/");
-		 String str="https://www.geeksforgeeks.org/";
+		String crawl=webCrawl(urlToCrawl);
+		String str = new String(urlToCrawl);
 
 		 int i=1;
 		 
-			 String[] w=crawl.split(" ");
+			 String[] w = crawl.split(" ");
 
 				 if(!str.contains(w[1]))
 				 {	
@@ -79,7 +81,7 @@ public class Crawler {
 					 crawl=crawl+" "+webCrawl(w[1]);
 				 }
 			 
-				 System.out.println(crawl);
+//				 System.out.println(crawl);
 		 String[] sa=crawl.split(" ");
 		 System.out.println(sa.length);
 		 String[] files=new String[sa.length];
@@ -88,10 +90,6 @@ public class Crawler {
 			
 		 }
 		 htmlToText(files);
-	}
-	
-	public static void main(String[] args) {
-		Crawler.filesFinder();
 	}
 
 }
