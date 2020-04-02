@@ -35,9 +35,8 @@ public class WebSearchEngine {
 	
 	public WebSearchEngine()
 	{
-		
-		
-		
+		String urlToCrawl = "http://geeksforgeeks.org/";
+		Crawler.spider(urlToCrawl);		
 	}
 
 	
@@ -284,7 +283,6 @@ public class WebSearchEngine {
 	// MAIN METHOD.........
 		
 	public static void main(String[] args) {
-		
 		
 		WebSearchEngine bruteforce = new WebSearchEngine();
 		

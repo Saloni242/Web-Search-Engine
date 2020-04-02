@@ -66,7 +66,7 @@ public class Crawler {
 		}	
 	}
 	
-	public static void filesFinder(String urlToCrawl)
+	public static void spider(String urlToCrawl)
 	{
 		int maxLimit = 1000;
 		webCrawl(urlToCrawl, maxLimit);
