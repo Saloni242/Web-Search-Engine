@@ -36,6 +36,7 @@ public class WebSearchEngine {
 			
 			WebSearchEngine w = new WebSearchEngine();			
 			
+			/** occurs to store the frequency of search word in each file. Each entry container <String filename, int frequency>	 */
 			Hashtable<String,Integer> occurrs = new Hashtable<String,Integer>();
 			Scanner scan = new Scanner (System.in);
 			System.out.println("Enter your search: ");
@@ -58,7 +59,7 @@ public class WebSearchEngine {
 					fileNumber++;
 				}
 					
-				if(pg==0) {					
+				if(pg == 0) {					
 					System.out.println("\n\n\n\n\n\n---------------------------------------------------");
 					System.out.println("Given word not found");
 					System.out.println("Searching in web for similar words.....");
@@ -69,8 +70,7 @@ public class WebSearchEngine {
 					//Ranking of Web Pages using merge sort 
 					//Collections.sort by default uses merge sort
 					Sorting.pageSort(occurrs,pg);
-				}
-							
+				}	
 			}
 			catch (Exception e) {
 				System.out.println("Exception:"+e);
@@ -78,11 +78,8 @@ public class WebSearchEngine {
 		}
 	
 	// MAIN METHOD.........
-		
 	public static void main(String[] args) {
-		
-		WebSearchEngine.searchEngine();
-		
+			WebSearchEngine.searchEngine();		
 		}
 	}
 	
