@@ -48,9 +48,9 @@ public class WebSearchEngine {
 		/** occurs to store the frequency of search word in each file. Each entry container <String filename, int frequency>	 */
 		Hashtable<String, Integer> occurrs = new Hashtable<String, Integer>();
 		Scanner scan = new Scanner(System.in);
-		char choice = 'y';
+		String choice = "y";
 
-
+		do {
 			System.out.println("\n***************************************************");
 			System.out.println("\nENTER THE SEARCH WORD: ");
 			String p = scan.nextLine();
@@ -84,14 +84,17 @@ public class WebSearchEngine {
 					//Collections.sort by default uses merge sort
 					Sorting.pageSort(occurrs,pg);
 				}	
+				System.out.println("\n\n Do you want to continue(y/n)??");
+				choice = scan.nextLine();
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-
+		} while(choice.equals("y"));
 			
 	}
 
 	// MAIN METHOD.........
 	public static void main(String[] args) {
 			WebSearchEngine.searchEngine();		
-		}
 	}
 }
