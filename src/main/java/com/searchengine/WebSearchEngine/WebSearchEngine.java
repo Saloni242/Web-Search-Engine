@@ -44,6 +44,8 @@ public class WebSearchEngine {
 		String urlToCrawl = "http://geeksforgeeks.org/";
 		Crawler.spider(urlToCrawl);
 		System.out.println("\n*****************CRAWLING STOPPED******************");
+		
+		/** occurs to store the frequency of search word in each file. Each entry container <String filename, int frequency>	 */
 		Hashtable<String, Integer> occurrs = new Hashtable<String, Integer>();
 		Scanner scan = new Scanner(System.in);
 		char choice = 'y';
@@ -76,23 +78,23 @@ public class WebSearchEngine {
 					System.out.println("Searching in web for similar words.....");
 					/* using regex to find similar strings to pattern */
 					SearchWord.altWord(p);
-				} else {
-
-					Sorting.pageSort(occurrs, pg);
-				}
-
-			} catch (Exception e) {
-				System.out.println("Exception:" + e);
+				} 
+				else {
+					//Ranking of Web Pages using merge sort 
+					//Collections.sort by default uses merge sort
+					Sorting.pageSort(occurrs,pg);
+				}	
+			}
+			catch(Exception e) {
+				e.printStackTrace();
 			}
 
 			
 	}
 
 	// MAIN METHOD.........
-
 	public static void main(String[] args) {
-
-		WebSearchEngine.searchEngine();
-
-	}
+			WebSearchEngine.searchEngine();		
+		}
+	
 }

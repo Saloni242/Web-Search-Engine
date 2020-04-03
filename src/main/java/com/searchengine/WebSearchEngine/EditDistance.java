@@ -7,9 +7,15 @@ import java.util.regex.Matcher;
 
 /**
  * Uses Edit distance to compare nearest distance between keyword and similar patterns obtained from regex.
- * */
+ **/
 public class EditDistance {
 
+	/**
+	 * Finds the edit distance between the words word1 and word2
+	 * @param word1
+	 * @param word2
+	 * @return
+	 */
 	public static int findEditDistance(String word1, String word2)
 	{
 		int len1 = word1.length();
@@ -17,7 +23,7 @@ public class EditDistance {
 	 
 		// len1+1, len2+1, because finally return dp[len1][len2]
 		int[][] dp = new int[len1 + 1][len2 + 1];
-	 
+ 
 		for (int i = 0; i <= len1; i++) {
 			dp[i][0] = i;
 		}
@@ -47,36 +53,37 @@ public class EditDistance {
 				}
 			}
 		}
-	 
-		return dp[len1][len2];
-		
+		return dp[len1][len2];		
 	}
 	
-	public static int editDistance(String word1, String word2) {
-		return EditDistance.findEditDistance(word1,word2);
-	}
-	
-	public static void findWord(File _sourceFile,int fileNumber,Matcher _m3,String p1)
+	/**
+	 * Find the given word in the file
+	 * @param sourceFile
+	 * @param fileNumber
+	 * @param matcher
+	 * @param p1
+	 */
+	public static void findWord(File sourceFile,int fileNumber,Matcher matcher,String p1)
 	{
 		try
     	{
-    		BufferedReader _rederObject = new BufferedReader(new FileReader(_sourceFile));
-    		String line = null;
-
-              while ((line = _rederObject.readLine()) != null){
-              _m3.reset(line);
-              while (_m3.find()) {
-            	  WebSearchEngine.key.add(_m3.group());
-                }
-             }
-              _rederObject.close();
-              for(int p = 0; p<WebSearchEngine.key.size(); p++){ 
-            	  WebSearchEngine.numbers.put(WebSearchEngine.key.get(p), editDistance(p1.toLowerCase(),WebSearchEngine.key.get(p).toLowerCase()));
-                }
+			BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
+			String line = null;
+			
+			while ((line = reader.readLine()) != null){
+				matcher.reset(line);
+				while (matcher.find()) {
+					WebSearchEngine.key.add(matcher.group());
+				}
+			}
+			reader.close();
+			for(int p = 0; p<WebSearchEngine.key.size(); p++){
+				WebSearchEngine.numbers.put(WebSearchEngine.key.get(p), findEditDistance(p1.toLowerCase(),WebSearchEngine.key.get(p).toLowerCase()));
+			}
     	}     
     	catch(Exception e)
     	{
-    		System.out.println("Exception:"+e);
+    		e.printStackTrace();
     	}
     	
 	}
