@@ -90,6 +90,9 @@ public class WebSearchEngine {
 				e.printStackTrace();
 			}
 		} while(choice.equals("y"));
+		System.out.println("\n***************************************************\n");
+		System.out.println("	:) THANK YOU FOR USING OUR SEARCH ENGINE :)        ");
+		System.out.println("\n***************************************************\n");
 			
 	}
 
