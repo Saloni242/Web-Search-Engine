@@ -92,12 +92,13 @@ public class SearchWord {
 		
 		Integer allowedDistance = 1;  // Edit distance allowed
 		boolean matchFound = false;  // set to true if word found with edit distance equal to allowedDistance
-		
-		System.out.println(WebSearchEngine.numbers.toString());
+
 		System.out.println("Did you mean? ");
+		int i=0;
 		for(Map.Entry entry: WebSearchEngine.numbers.entrySet()){
 			if(allowedDistance == entry.getValue()) {
-				System.out.print(entry.getKey()+"  ");		
+				i++;
+				System.out.print("("+i+") "+entry.getKey()+"\n");		
 				matchFound = true;
 			}
 		}	        
