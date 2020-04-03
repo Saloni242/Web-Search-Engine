@@ -1,5 +1,8 @@
 package com.searchengine.WebSearchEngine;
-
+/**
+ * Ranking of Web Pages is done using merge sort.
+ * Collections.sort by default uses merge sort.
+*/
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,8 +22,6 @@ public class Sorting {
 	        }});
 	      
 	       Collections.reverse(l);
-	       
-	      
 	       if(occur!=0) {
 		       System.out.println("\n------Web Page Ranking-----\n");
 		       

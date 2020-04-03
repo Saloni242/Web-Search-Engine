@@ -26,21 +26,21 @@ public class Crawler {
 		try {			
 			 Document doc = Jsoup.connect(urlToCrawl).get();
 			 String pattern = ".*" + urlToCrawl.replaceAll("^(http|https)://", "") + ".*";
-			 System.out.println("URL Pattern to parse: "+ pattern);
+			 System.out.println("\nURL Pattern to parse: "+ pattern);
 
 			 Elements linksOnPage = doc.select("a[href]");
 			 String currentURL;
 			 for (Element page : linksOnPage) {
 				 currentURL = page.attr("abs:href");
 				 if(uniqueLinks.contains(currentURL)) {
-					 System.out.println("URL: " + currentURL + " already visited");
+					 System.out.println("\nURL: " + currentURL + " ----> already visited");
 				 } 
 				 else if(!Pattern.matches(pattern, currentURL)) {
-					 System.out.println("URL: " + currentURL + " is irrevant. Will not be parsed.");
+					 System.out.println("\nURL: " + currentURL + " ----> is irrevant. Will not be parsed.");
 				 }
 				 else {
 					 uniqueLinks.add(page.attr("abs:href"));
-					 System.out.println("URL: " + currentURL + " will be crawled");
+					 System.out.println("\nURL: " + currentURL + " ---->  will be crawled");
 				 }
 			}
 		}
