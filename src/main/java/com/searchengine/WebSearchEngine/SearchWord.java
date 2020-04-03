@@ -45,11 +45,13 @@ public class SearchWord {
 			offset1a = WebSearchEngine.search1(word, txt.substring(loc)); 
 			if ((offset1a + loc) < txt.length()) {
 				counter++;
-				System.out.println(word + " at position " + (offset1a + loc));  //printing position of word
+				System.out.println("\n"+word+ " at position " + (offset1a + loc));  //printing position of word
 			}
 		}
-		if(counter!=0)	{			
-			System.out.println("\nFound in "+filePath.getName()); // Founded from which text file..			
+		if(counter!=0)	{		
+			System.out.println("-------------------------------------------------");
+			System.out.println("\nFound in "+filePath.getName()); // Founded from which text file..		
+			System.out.println("-------------------------------------------------");
 		}
 		return counter;
 	}

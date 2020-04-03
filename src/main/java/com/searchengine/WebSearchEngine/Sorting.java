@@ -23,15 +23,18 @@ public class Sorting {
 	      
 	       Collections.reverse(l);
 	       if(occur!=0) {
-		       System.out.println("\n------Web Page Ranking-----\n");
+		       System.out.println("\n-----------------Web Page Ranking----------------\n");
 		       
 		       int n = 5;
 		       int j = 1;
+		       System.out.printf( "%-10s %s\n", "Sr. No.", "Name and occurance" );
+		       System.out.println("-------------------------------------------------");
 				while (l.size() > j && n>0){
-					System.out.println("("+j+") "+l.get(j)+" times ");
+					System.out.printf("\n%-10d| %s\n", j, l.get(j));
 					j++;
 					n--;
 				}
+				System.out.println("\n-------------------------------------------------\n");
 	       }
 	}
 
